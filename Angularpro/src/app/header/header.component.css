@@ -1,0 +1,84 @@
+.jumbotron {
+    width: auto;
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    background-position: center;
+}
+
+
+.text-center {
+    padding: 0.5rem;
+}
+
+/* #person_name{ 
+    margin-bottom: 1rem; 
+    background-color: rgb(67, 237, 75);
+    color: rgb(6, 6, 6);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+} */
+h1{
+    line-height: 1.4;
+}
+h4 {
+    /* font-size: 50px; */
+    line-height: 1.4;
+    /* font-weight: bold; */
+    text-align: center;
+    margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+    h3 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    h3 {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    h3 {
+        font-size: 5rem;
+    }
+}
+
+.iconic {
+    /* border : 2px solid black; */
+    display: flex;
+    height: 70px;
+    width: 150px;
+    margin-top: 1rem;
+    /* padding: auto; */
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    gap: 1rem;
+    line-height: 1rem;
+    padding: 1rem 1rem 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* .iconic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align icons to the right 
+    align-items: flex-start; /* Align icons to the top 
+    gap: 1rem;
+    padding: 1rem;
+    position: absolute;
+} */
+
+@media (max-width: 768px) {
+    .iconic {
+        justify-content: center;
+        /* Center icons horizontally */
+        align-items: center;
+        /* Center icons vertically */
+    }
+}

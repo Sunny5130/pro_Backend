@@ -1,0 +1,317 @@
+<section class="user">
+    <div class="user_options-container">
+        <div class="user_options-text">
+            <div class="user_options-unregistered">
+                <h2 class="user_unregistered-title">Don't have an account?</h2>
+                <p class="user_unregistered-text"></p>
+                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+            </div>
+
+            <div class="user_options-registered">
+                <h2 class="user_registered-title">Have an account?</h2>
+                <p class="user_registered-text"></p>
+                <button class="user_registered-login" id="login-button">Login</button>
+            </div>
+        </div>
+
+        <div class="user_options-forms" id="user_options-forms">
+            <div class="user_forms-login">
+                <h2 class="forms_title">Login</h2>
+                <form class="forms_form" (submit)="login($event)">
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            <input type="text" placeholder="Name" class="forms_field-input" id="login-username" required
+                                autofocus />
+                        </div>
+                        <div class="forms_field">
+                            <input type="password" placeholder="Password" class="forms_field-input" id="login-password"
+                                required />
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <input type="submit" value="Log In" class="forms_buttons-action">
+                    </div>
+                </form>
+            </div>
+            <div class="user_forms-signup">
+                <h2 class="forms_title">Sign Up</h2>
+                <form class="forms_form" (submit)="signUp($event)">
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            <input type="text" placeholder="Full Name" class="forms_field-input" id="signup-username"
+                                required />
+                        </div>
+                        <div class="forms_field">
+                            <input type="password" placeholder="Password" class="forms_field-input" id="signup-password"
+                                required />
+                        </div>
+                        <div class="forms_field">
+                            <input type="password" placeholder="Confirm Password" class="forms_field-input"
+                                id="signup-confirm-password" required />
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <input type="submit" value="Sign up" class="forms_buttons-action">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="hero" style="display: none;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand text-danger-emphasis fw-bold" href="./">Weather_Forcaster</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active ms-5" aria-current="page" href="#">Home</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Weather
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Delhi</a></li>
+                            <li><a class="dropdown-item" href="#">Punjab</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Mumbai</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+                <form class="d-flex" role="search" (submit)="onSub($event)"><!---->
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        id="searchCity">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5 mb-5">
+        <main>
+            <h1 class="text-center mb-5 fw-bold">Weather of {{city}}</h1>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Temperature</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="Temp_temp2"></span><small
+                                    class="text-body-secondary fw-light"><span>&#8451;</span></small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Temperature : <span id="Temp_temp"> ...</span></li>
+                                <li>Min Temperature : <span id="Temp_minTemp"> ...</span></li>
+                                <li>Max Tempearture : <span id="Temp_maxTemp"> ...</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Humidity Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="hi_hu2"></span><small
+                                    class="text-body-secondary fw-light"> %</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Cloud_pct : <span id="hi_cld">...</span></li>
+                                <li>Feels_like : <span id="hi_fl">...</span></li>
+                                <li>Humidity : <span id="hi_hu">...</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Wind Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="wi_ws2"></span><small
+                                    class="text-body-secondary fw-light"> Knots</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Wind Degree : <span id="wi_wd">...</span></li>
+                                <li>Wind Speed : <span id="wi_ws">...</span></li>
+                                <li>Sunrise Time : <span id="wi_srt">...</span></li>
+                                <li>Sunset Time : <span id="wi_sst">...</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+            <h2 class="display-6 text-center mb-5 fw-bold">Weather for other places</h2>
+
+            <div class="table-responsive m-5 bg-transparent">
+                <table class="table text-center" style="background-color: transparent;">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">City</th>
+                            <th style="width: 10%;">Cloud Cover</th>
+                            <th style="width: 10%;">Temperature</th>
+                            <th style="width: 10%;">Feels Like</th>
+                            <th style="width: 10%;">Humidity</th>
+                            <th style="width: 10%;">Min Temp</th>
+                            <th style="width: 10%;">Max Temp</th>
+                            <th style="width: 10%;">Wind Speed</th>
+                            <th style="width: 10%;">Wind Degrees</th>
+                            <th style="width: 15%;">Sunrise</th>
+                            <th style="width: 15%;">Sunset</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Uttarakhand</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Chandigarh</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Pune</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Kohima</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Jaipur</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start city" id="cityName">Kolkata</th>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>

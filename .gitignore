@@ -1,0 +1,64 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/Angularpro/dist
+/Angularpro/tmp
+/Angularpro/out-tsc
+/Angularpro/bazel-out
+/Backend/.env
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+node_modules
+/Angularpro/node_modules
+/Backend/node_modules
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+/Backend/.vscode/*
+/Angularpro/.vscode/*
+!.vscode/settings.json
+/Angularpro/.vscode/tasks.json
+/Angularpro/.vscode/launch.json
+/Angularpro/.vscode/extensions.json
+/Backend/.vscode/tasks.json
+/Backend/.vscode/launch.json
+/Backend/.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+/Angularpro/.angular/cache
+/Angularpro/.sass-cache
+.sass-cache/
+/Angularpro/connect.lock
+/connect.lock
+/Angularpro/coverage
+/coverage
+/Angularpro/libpeerconnection.log
+/libpeerconnection.log
+testem.log
+/Angularpro/testem.log
+/Angularpro/typings
+/typings
+
+# System files
+/Angularpro/.DS_Store
+/Angularpro/Thumbs.db
+.DS_Store
+Thumbs.db
