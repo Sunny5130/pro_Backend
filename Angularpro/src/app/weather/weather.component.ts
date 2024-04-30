@@ -31,7 +31,7 @@ export class WeatherComponent {
       return;
     }
     try {
-      const response = this.http.post("http://localhost:3000/weather", {
+      const response = this.http.post("https://pro-backend-95b4.onrender.com/weather", {
         city: this.city
       }, { withCredentials: true }).subscribe((res: any) => {
         console.log(res);
@@ -109,7 +109,7 @@ export class WeatherComponent {
   }
   async login(ev: Event) {
     ev.preventDefault();
-    const res = this.http.post('http://localhost:3000/login', {
+    const res = this.http.post('https://pro-backend-95b4.onrender.com/login', {
       userName: this.el.nativeElement.querySelectorAll('#login-username')[0].value,
       password: this.el.nativeElement.querySelectorAll('#login-password')[0].value,
     }, { withCredentials: true }).subscribe((res: any) => {
@@ -130,7 +130,7 @@ export class WeatherComponent {
       alert('Password not match');
       return;
     }
-    this.http.post('http://localhost:3000/register', {
+    this.http.post('https://pro-backend-95b4.onrender.com/register', {
       userName: this.el.nativeElement.querySelectorAll('#signup-username')[0].value,
       password: password,
     }, { withCredentials: true }).subscribe((res: any) => {
