@@ -44,7 +44,8 @@ app.post("/register",async(req,res)=>{
             res.setHeader("Access-Control-Allow-Credentials",true);
             res.cookie("token",token,{
                 expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-                secure: true,
+                secure: false,
+                httpOnly: true,
             });
             await user.save();
             res.status(201).send({msg:"User Created", token: token});
@@ -70,7 +71,8 @@ app.post("/login",async(req,res)=>{
             res.setHeader("Access-Control-Allow-Credentials",true);
             res.cookie("token",token,{
                 expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-                secure: true,
+                secure: false,
+                httpOnly: true,
             });
             console.log(jwt.verify(token,process.env.USER_SECRET_KEY));
 
