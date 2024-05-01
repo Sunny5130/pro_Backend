@@ -31,7 +31,7 @@ export class WeatherComponent {
       return;
     }
     try {
-      const response = this.http.post("https://pro-backend-95b4.onrender.com/weather", {
+      this.http.post("https://pro-backend-95b4.onrender.com/weather", {
         city: this.city
       }, { withCredentials: true }).subscribe((res: any) => {
         console.log(res);

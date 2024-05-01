@@ -44,7 +44,7 @@ app.post("/register",async(req,res)=>{
             res.setHeader("Access-Control-Allow-Credentials",true);
             res.cookie("token",token,{
                 expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-                secure: false,
+                secure: true,
             });
             await user.save();
             res.status(201).send({msg:"User Created", token: token});
@@ -70,7 +70,7 @@ app.post("/login",async(req,res)=>{
             res.setHeader("Access-Control-Allow-Credentials",true);
             res.cookie("token",token,{
                 expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-                secure: false,
+                secure: true,
             });
             console.log(jwt.verify(token,process.env.USER_SECRET_KEY));
 
@@ -89,6 +89,7 @@ app.post("/login",async(req,res)=>{
 // app.get("/weather", cookiesMiddleware, weather);
 
 app.post("/weather",cookiesMiddleware ,async (req, res) => {
+    console.log("Inside /weather route");
     try {
         const { city } = req.body;
         console.log("city: ", city);
@@ -101,7 +102,7 @@ app.post("/weather",cookiesMiddleware ,async (req, res) => {
             }
         };
         const response = await fetch(url, options);
-        
+        console.log("response from api" + response.json());
         // Set cookies in the response
         // res.cookie('exampleCookie', 'exampleValue', { maxAge: 900000, httpOnly: true });
         // res.cookie('anotherCookie', 'anotherValue', { maxAge: 900000, httpOnly: true });
